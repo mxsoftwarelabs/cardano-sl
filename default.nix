@@ -110,6 +110,7 @@ let
       args: pkgs.callPackage ./scripts/launch/connect-to-cluster (args // { inherit gitrev; } // walletConfig );
   other = rec {
     demoCluster = pkgs.callPackage ./scripts/launch/demo-cluster { inherit gitrev; };
+    shellcheckTests = pkgs.callPackage ./scripts/test/shellcheck.nix { src = ./.; };
     walletIntegrationTests = pkgs.callPackage ./scripts/test/wallet/integration { inherit gitrev; };
     buildWalletIntegrationTests = pkgs.callPackage ./scripts/test/wallet/integration/build-test.nix { inherit walletIntegrationTests pkgs; };
     cardano-sl-explorer-frontend = (import ./explorer/frontend {
