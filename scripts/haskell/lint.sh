@@ -12,13 +12,13 @@ incpath=""
 if [ -d "src/core" ]; then
   hlint -h HLint.hs \
   -X TypeApplications \
-  --cpp-include=$incpath --cpp-define=CONFIG=dev \
+  --cpp-include="$incpath" --cpp-define=CONFIG=dev \
   src
 else
   hlint -h HLint.hs \
   -X TypeApplications \
-  --cpp-include=$incpath --cpp-define=CONFIG=dev \
-  lib/src lib/test lib/bench $projects
+  --cpp-include="$incpath" --cpp-define=CONFIG=dev \
+  lib/src lib/test lib/bench "$projects"
 fi
 
 ex=$?
